@@ -5,11 +5,11 @@ module.exports = {
   content: [
     './pages/**/*.{html,js,jsx,ts,tsx}',
     './components/**/*.{html,js,jsx,ts,tsx}',
-    './util/**/*.{html,js,jsx,ts,tsx}'
+    './utils/**/*.{html,js,jsx,ts,tsx}',
   ],
   presets: [],
-  prefix: 'pokedex-',
-  important: '#app',
+  prefix: '',
+  // important: '#app',
   darkMode: 'media', // or 'class'
   theme: {
     accentColor: ({ theme }) => ({
@@ -51,13 +51,17 @@ module.exports = {
     backgroundImage: {
       none: 'none',
       'gradient-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
-      'gradient-to-tr': 'linear-gradient(to top right, var(--tw-gradient-stops))',
+      'gradient-to-tr':
+        'linear-gradient(to top right, var(--tw-gradient-stops))',
       'gradient-to-r': 'linear-gradient(to right, var(--tw-gradient-stops))',
-      'gradient-to-br': 'linear-gradient(to bottom right, var(--tw-gradient-stops))',
+      'gradient-to-br':
+        'linear-gradient(to bottom right, var(--tw-gradient-stops))',
       'gradient-to-b': 'linear-gradient(to bottom, var(--tw-gradient-stops))',
-      'gradient-to-bl': 'linear-gradient(to bottom left, var(--tw-gradient-stops))',
+      'gradient-to-bl':
+        'linear-gradient(to bottom left, var(--tw-gradient-stops))',
       'gradient-to-l': 'linear-gradient(to left, var(--tw-gradient-stops))',
-      'gradient-to-tl': 'linear-gradient(to top left, var(--tw-gradient-stops))',
+      'gradient-to-tl':
+        'linear-gradient(to top left, var(--tw-gradient-stops))',
     },
     backgroundOpacity: ({ theme }) => theme('opacity'),
     backgroundPosition: {
@@ -75,7 +79,7 @@ module.exports = {
       auto: 'auto',
       cover: 'cover',
       contain: 'contain',
-      ...theme('spacing')
+      ...theme('spacing'),
     }),
     blur: {
       0: '0',
@@ -152,17 +156,26 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       slate: colors.slate,
-      gray: {
-        50: '#FAFAFA',
-        100: '#F4F4F5',
-        200: '#E4E4E7',
-        300: '#D4D4D8',
-        400: '#A1A1AA',
-        500: '#71717A',
-        600: '#52525B',
-        700: '#3F3F46',
-        800: '#27272A',
-        900: '#18181B',
+      gray: colors.gray,
+      // gray: {
+      //   50: '#FAFAFA',
+      //   100: '#F4F4F5',
+      //   200: '#E4E4E7',
+      //   300: '#D4D4D8',
+      //   400: '#A1A1AA',
+      //   500: '#71717A',
+      //   600: '#52525B',
+      //   700: '#3F3F46',
+      //   800: '#27272A',
+      //   900: '#18181B',
+      // },
+      default: {
+        primary: '#2adab1',
+        secondary: '#26c49f',
+      },
+      bug: {
+        primary: '#5bba61',
+        secondary: '#75c87a',
       },
       zinc: colors.zinc,
       neutral: colors.neutral,
@@ -342,7 +355,14 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      serif: [
+        'ui-serif',
+        'Georgia',
+        'Cambria',
+        '"Times New Roman"',
+        'Times',
+        'serif',
+      ],
       mono: [
         'ui-monospace',
         'SFMono-Regular',
@@ -904,7 +924,8 @@ module.exports = {
       all: 'all',
       DEFAULT:
         'color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
-      colors: 'color, background-color, border-color, outline-color, text-decoration-color, fill, stroke',
+      colors:
+        'color, background-color, border-color, outline-color, text-decoration-color, fill, stroke',
       opacity: 'opacity',
       shadow: 'box-shadow',
       transform: 'transform',
@@ -995,7 +1016,7 @@ module.exports = {
         90: '90',
         100: '100',
       },
-    }
+    },
   },
   corePlugins: {
     opacity: false,
@@ -1005,7 +1026,7 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('tailwindcss-children'),
-    plugin(function({ addUtilities }) {
+    plugin(function ({ addUtilities }) {
       addUtilities({
         '.content-auto': {
           'content-visibility': 'auto',
@@ -1016,19 +1037,19 @@ module.exports = {
         '.content-visible': {
           'content-visibility': 'visible',
         },
-      })
+      });
     }),
-    plugin(function({ matchUtilities, theme }) {
+    plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
           tab: (value) => ({
-            tabSize: value
+            tabSize: value,
           }),
         },
-        { values: theme('tabSize') }
-      )
+        { values: theme('tabSize') },
+      );
     }),
-    plugin(function({ addComponents }) {
+    plugin(function ({ addComponents }) {
       addComponents({
         '.btn': {
           padding: '.5rem 1rem',
@@ -1039,29 +1060,29 @@ module.exports = {
           backgroundColor: '#3490dc',
           color: '#fff',
           '&:hover': {
-            backgroundColor: '#2779bd'
+            backgroundColor: '#2779bd',
           },
         },
         '.btn-red': {
           backgroundColor: '#e3342f',
           color: '#fff',
           '&:hover': {
-            backgroundColor: '#cc1f1a'
+            backgroundColor: '#cc1f1a',
           },
         },
-      })
+      });
     }),
-    plugin(function({ addBase, theme }) {
+    plugin(function ({ addBase, theme }) {
       addBase({
-        'h1': { fontSize: theme('fontSize.2xl') },
-        'h2': { fontSize: theme('fontSize.xl') },
-        'h3': { fontSize: theme('fontSize.lg') },
-      })
+        h1: { fontSize: theme('fontSize.2xl') },
+        h2: { fontSize: theme('fontSize.xl') },
+        h3: { fontSize: theme('fontSize.lg') },
+      });
     }),
-    plugin(function({ addVariant }) {
-      addVariant('optional', '&:optional')
-      addVariant('group-optional', ':merge(.group):optional &')
-      addVariant('peer-optional', ':merge(.peer):optional ~ &')
-    })
+    plugin(function ({ addVariant }) {
+      addVariant('optional', '&:optional');
+      addVariant('group-optional', ':merge(.group):optional &');
+      addVariant('peer-optional', ':merge(.peer):optional ~ &');
+    }),
   ],
-}
+};

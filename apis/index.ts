@@ -1,23 +1,21 @@
-const basePath = `https://pokeapi.co/api/v2/pokemon`;
+import CallApi from './apiUtil';
 
 const fetchPokemonList = async (limit: number, offset: number) => {
-  const response = await fetch(`${basePath}?limit=${limit}&offset=${offset}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
+  return CallApi({
+    url: `${process.env.BASE_URL}`,
+    method: 'GET',
+    queryParams: {
+      limit,
+      offset,
     },
   });
-  return await response?.json();
 };
 
-const fetchPokemonDetails = async (pokemonName: string) => {
-  const response = await fetch(`${basePath}/${pokemonName}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
+const fetchPokemonDetails = (pokemonName: string) => {
+  return CallApi({
+    url: `${process.env.BASE_URL}/${pokemonName}`,
+    method: 'GET',
   });
-  return await response?.json();
 };
 
 export { fetchPokemonList, fetchPokemonDetails };
