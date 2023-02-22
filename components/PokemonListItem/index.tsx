@@ -21,9 +21,7 @@ export default function PokemonListItem({
           <p className="text-xl text-white font-semibold capitalize">
             {pokemon.name}
           </p>
-          <p className="text-lg font-semibold text-default-secondary">
-            #{pokeIndex}
-          </p>
+          <p className="text-lg font-semibold text-white">#{pokeIndex}</p>
         </div>
         <Image
           className="mx-auto my-0"
