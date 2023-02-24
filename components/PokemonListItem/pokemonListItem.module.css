@@ -1,0 +1,36 @@
+.container {
+  padding: 1rem;
+  background-color: #5cbe62;
+  border-radius: 10px;
+  margin: 5px;
+  height: calc(100% - 10px);
+}
+
+@media (min-width: 451px) and (max-width: 700px) {
+  .container {
+    margin: 8px;
+    height: calc(100% - 16px);
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1000px) {
+  .container {
+    margin: 12px;
+    height: calc(100% - 24px);
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1200px) {
+  .container {
+    margin: 18px;
+    height: calc(100% - 36px);
+  }
+}
+
+@media (min-width: 1201px) {
+  .container {
+    margin: 25px;
+    height: calc(100% - 50px);
+  }
+}
